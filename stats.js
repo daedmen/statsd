@@ -75,7 +75,11 @@ config.configFile(process.argv[2], function (config, oldConfig) {
           }
           timers[key].push(Number(fields[0] || 0));
         } else if (fields[1].trim() == "g") {
-          gauges[key] = Number(fields[0] || 0);
+          if (gauges[key] && fields[0].match(/^[-+]/)) {
+            gauges[key] += Number(fields[0] || 0);
+          } else {
+            gauges[key] = Number(fields[0] || 0);
+          }
         } else {
           if (fields[2] && fields[2].match(/^@([\d\.]+)/)) {
             sampleRate = Number(fields[2].match(/^@([\d\.]+)/)[1]);
