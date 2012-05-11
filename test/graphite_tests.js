@@ -267,8 +267,8 @@ module.exports = {
     var testresult = teststartvalue + Number(testdeltavalue);
     var me = this;
     this.acceptor.once('connection', function(c) {
-      statsd_send('test_value:' + teststartvalue + '|g', me.sock, '127.0.0.1', 8125, function() {
-        statsd_send('test_value:' + testdeltavalue + '|g', me.sock, '127.0.0.1', 8125, function() {
+      statsd_send('test_value:' + teststartvalue + '|gd', me.sock, '127.0.0.1', 8125, function() {
+        statsd_send('test_value:' + testdeltavalue + '|gd', me.sock, '127.0.0.1', 8125, function() {
           collect_for(me.acceptor, me.myflush * 2, function(strings) {
             test.ok(strings.length > 0, 'should receive some data');
             var hashes = _.map(strings, function(x) {
