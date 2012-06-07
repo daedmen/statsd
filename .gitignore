@@ -15,3 +15,5 @@ node_modules
 .idea/statsd_daedmen.iml
 
 .idea/scopes/scope_settings.xml
+
+.DS_Store
